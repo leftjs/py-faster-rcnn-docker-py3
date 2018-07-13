@@ -6,7 +6,7 @@ COPY files/.screenrc /root/.screenrc
 RUN apt-get update && apt-get install -y screen wget nano openssh-client \
   libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler \
   libgflags-dev libgoogle-glog-dev liblmdb-dev
-RUN apt-get install --no-install-recommends libboost-all-dev
+RUN apt-get install -y --no-install-recommends libboost-all-dev
 
 RUN wget https://repo.continuum.io/archive/Anaconda2-4.3.1-Linux-x86_64.sh -O ~/anaconda2.sh
 # COPY files/anaconda2.sh ~/anaconda2.sh
