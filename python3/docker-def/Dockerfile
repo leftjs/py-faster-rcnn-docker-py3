@@ -5,7 +5,8 @@ COPY files/.screenrc /root/.screenrc
 
 RUN apt-get update && apt-get install -y screen wget nano openssh-client protobuf-compiler bundler libopencv-dev
 
-RUN wget https://repo.continuum.io/archive/Anaconda2-4.3.1-Linux-x86_64.sh -O ~/anaconda2.sh
+# RUN wget https://repo.continuum.io/archive/Anaconda2-4.3.1-Linux-x86_64.sh -O ~/anaconda2.sh
+COPY ~/anaconda2.sh ~/anaconda2.sh
 RUN bash ~/anaconda2.sh -b -p ~/anaconda2
 ENV PATH /root/anaconda2/bin:${PATH}
 COPY files/caffe-requirements-conda2.txt /tmp/caffe-requirements-conda2.txt
