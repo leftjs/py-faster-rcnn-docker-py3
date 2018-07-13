@@ -10,6 +10,7 @@ RUN bash ~/anaconda2.sh -b -p ~/anaconda2
 ENV PATH /root/anaconda2/bin:${PATH}
 COPY files/caffe-requirements-conda2.txt /tmp/caffe-requirements-conda2.txt
 COPY files/.condarc ~/.condarc
+COPY files/.gitconfig ~/.gitconfig
 RUN conda create -y --name py-faster-r-cnn python=2.7 --file /tmp/caffe-requirements-conda2.txt -c conda-forge -c menpo -c ActivisionGameScience
 COPY files/run-on-env /usr/bin/run-on-env
 RUN chmod a+x /usr/bin/run-on-env
