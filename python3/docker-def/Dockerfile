@@ -30,7 +30,7 @@ RUN echo '#!/bin/sh\n\
 
 RUN apt-get install -y git
 WORKDIR /root
-RUN git clone --recursive -b python3 https://github.com/leftjs/py-faster-rcnn.git
+RUN git clone --recursive -b python3 https://github.com/splashblot/py-faster-rcnn.git
 WORKDIR /root/py-faster-rcnn
 # Checking out just particular commit
 RUN git fetch && git checkout 5fcd5ea8e5db277320ef29bf6ae6a5a4886377b5

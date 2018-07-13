@@ -1,1 +1,1 @@
-nvidia-docker build -t splashblot/py-faster-rcnn-py3 docker-def
+nvidia-docker build -t leftjs/py-faster-rcnn-docker-py3 docker-def
