@@ -9,6 +9,7 @@ RUN wget https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh -O ~/
 RUN bash ~/anaconda3.sh -b -p ~/anaconda3
 ENV PATH /root/anaconda3/bin:${PATH}
 COPY files/caffe-requirements-conda3.txt /tmp/caffe-requirements-conda3.txt
+COPY files/.condarc ~/.condarc
 RUN conda create -y --name py-faster-r-cnn python=3.5 --file /tmp/caffe-requirements-conda3.txt -c conda-forge -c menpo -c ActivisionGameScience
 COPY files/run-on-env /usr/bin/run-on-env
 RUN chmod a+x /usr/bin/run-on-env
