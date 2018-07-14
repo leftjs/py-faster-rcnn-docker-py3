@@ -20,7 +20,7 @@ COPY files/run-on-env /usr/bin/run-on-env
 RUN chmod a+x /usr/bin/run-on-env
 RUN run-on-env pip install easydict
 RUN echo "source activate py-faster-r-cnn" >> /root/.bashrc
-RUN rm ~/anaconda2.sh
+RUN rm ~/anaconda3.sh
 
 WORKDIR /root/anaconda3/envs/py-faster-r-cnn
 RUN mkdir -p ./etc/conda/activate.d
