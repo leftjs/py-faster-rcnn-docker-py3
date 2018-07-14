@@ -3,10 +3,21 @@ ARG cpu_or_gpu=gpu
 
 COPY files/.screenrc /root/.screenrc
 
-RUN apt-get update && apt-get install -y screen wget nano openssh-client \
-  libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler \
+
+
+RUN apt-get update && apt-get install -y screen wget nano openssh-client git\
+  libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler \
   libgflags-dev libgoogle-glog-dev liblmdb-dev
 RUN apt-get install -y --no-install-recommends libboost-all-dev
+
+# make install protobuf, see also: https://github.com/BVLC/caffe/issues/4988#issuecomment-261782582
+RUN apt-get install -y autoconf automake libtool curl make g++ unzip
+WORKDIR /root
+RUN git clone https://github.com/google/protobuf.git 
+WORKDIR /root/protobuf
+RUN git submodule update --init --recursive
+RUN bash ./autogen.sh && bash ./configure && make && make check && make install && ldconfig
+
 
 RUN wget https://repo.anaconda.com/archive/Anaconda3-5.2.0-Linux-x86_64.sh -O ~/anaconda3.sh
 
@@ -34,7 +45,6 @@ RUN echo '#!/bin/sh\n\
   unset OLD_LD_LIBRARY_PATH\n'\
   > ./etc/conda/deactivate.d/env_vars.sh
 
-RUN apt-get install -y git
 WORKDIR /root
 RUN git clone --recursive https://github.com/rbgirshick/py-faster-rcnn.git
 WORKDIR /root/py-faster-rcnn
