@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y screen wget nano openssh-client git\
   libgflags-dev libgoogle-glog-dev liblmdb-dev 
 RUN apt-get install -y --no-install-recommends libboost-all-dev
 
-RUN apt get install -y python-dev 
+RUN apt-get install -y python-dev 
 
 RUN wget https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh -O ~/anaconda3.sh
 RUN bash ~/anaconda3.sh -b -p ~/anaconda3
