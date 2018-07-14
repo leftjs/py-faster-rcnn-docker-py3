@@ -3,14 +3,7 @@ ARG cpu_or_gpu=gpu
 
 COPY files/.screenrc /root/.screenrc
 
-
-
-RUN apt-get update && apt-get install -y screen wget nano openssh-client git\
-  libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler \
-  libgflags-dev libgoogle-glog-dev liblmdb-dev 
-RUN apt-get install -y --no-install-recommends libboost-all-dev
-
-RUN apt-get install -y python-dev 
+RUN apt-get update && apt-get install -y screen wget nano openssh-client protobuf-compiler bundler libopencv-dev
 
 RUN wget https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh -O ~/anaconda3.sh
 RUN bash ~/anaconda3.sh -b -p ~/anaconda3
